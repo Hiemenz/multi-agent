@@ -1,0 +1,23 @@
+slack:
+  bot_token: ""          # override: SLACK_BOT_TOKEN env var
+  app_token: ""          # override: SLACK_APP_TOKEN env var
+  channel_id: ""
+  approval_timeout_seconds: 300
+
+gemini:
+  api_key: ""            # override: GEMINI_API_KEY env var
+  model: "gemini-2.0-flash"
+  temperature: 0.7
+  max_tokens: 8192
+
+display:
+  epd_model: "epd7in5_V2"
+  width: 800
+  height: 480
+
+workspace:
+  path: "./workspace"
+  backup_path: "./backups"
+
+log_path: "./logs/audit.jsonl"
+log_level: "DEBUG"
