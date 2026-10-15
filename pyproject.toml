@@ -1,34 +1,32 @@
-[tool.poetry]
+[project]
 name = "multi-agent"
 version = "0.1.0"
 description = "Autonomous multi-agent task orchestrator"
-authors = ["hiemenz"]
-packages = [{include = "multi_agent"}]
+authors = [{ name = "hiemenz" }]
+requires-python = ">=3.13"
+dependencies = [
+    "google-genai>=1.64.0,<2",
+    "slack-bolt>=1.27.0,<2",
+    "aiohttp>=3.13.3,<4",
+    "pillow>=11.3.0,<12",
+    "pyyaml>=6.0.3,<7",
+    "python-dotenv>=1.2.1,<2",
+    "gitpython>=3.1.46,<4",
+    "aiofiles>=24.1.0,<25",
+    "tenacity>=9.1.4,<10",
+    "spidev>=3.8,<4; sys_platform == 'linux'",
+    "rpi-gpio>=0.7.1,<0.8; sys_platform == 'linux'",
+]
 
-[tool.poetry.dependencies]
-python = "^3.13"
-google-genai = "^1.0.0"
-slack-bolt = "^1.21.0"
-aiohttp = "^3.11.0"
-pillow = "^11.1.0"
-pyyaml = "^6.0.2"
-python-dotenv = "^1.0.1"
-gitpython = "^3.1.44"
-aiofiles = "^24.1.0"
-tenacity = "^9.0.0"
-spidev = {version = "^3.6", markers = "sys_platform == 'linux'"}
-rpi-gpio = {version = "^0.7.1", markers = "sys_platform == 'linux'"}
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.3.0"
-pytest-asyncio = "^0.24.0"
-
-[tool.poetry.scripts]
-multi-agent = "multi_agent.__main__:run"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[dependency-groups]
+dev = [
+    "pytest>=8.4.2,<9",
+    "pytest-asyncio>=0.24.0,<0.25",
+]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
+
+[tool.uv]
+# Scripts, not an installable package.
+package = false
